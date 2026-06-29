@@ -1,0 +1,25 @@
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# Dependency and build output (this theme has none, kept as a guard)
+node_modules/
+vendor/
+dist/
+build/
+
+# Local environment
+.env
+.env.*

@@ -1,0 +1,80 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "720px",
+			"wideSize": "1080px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"custom": true,
+			"palette": [
+				{ "slug": "background", "color": "#eceae4", "name": "Background" },
+				{ "slug": "surface", "color": "#f4f3ef", "name": "Surface" },
+				{ "slug": "foreground", "color": "#1b1c1e", "name": "Foreground" },
+				{ "slug": "muted", "color": "#55585c", "name": "Muted" },
+				{ "slug": "faint", "color": "#8a8d92", "name": "Faint" },
+				{ "slug": "accent", "color": "#345b7d", "name": "Accent" }
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"defaultFontSizes": false,
+			"fontFamilies": [
+				{
+					"slug": "sans",
+					"name": "Sans",
+					"fontFamily": "\"Hanken Grotesk\", system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+				},
+				{
+					"slug": "serif",
+					"name": "Serif",
+					"fontFamily": "Newsreader, Georgia, \"Times New Roman\", serif"
+				},
+				{
+					"slug": "mono",
+					"name": "Mono",
+					"fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, Menlo, monospace"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "size": "0.85rem", "name": "Small" },
+				{ "slug": "medium", "size": "1rem", "name": "Medium" },
+				{ "slug": "large", "size": "1.35rem", "name": "Large" },
+				{ "slug": "x-large", "size": "2rem", "name": "Extra large" },
+				{ "slug": "xx-large", "size": "clamp(2.5rem, 6vw, 3.75rem)", "name": "Huge" }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "vh", "vw", "%" ],
+			"spacingSizes": [
+				{ "slug": "20", "size": "0.5rem", "name": "1" },
+				{ "slug": "30", "size": "1rem", "name": "2" },
+				{ "slug": "40", "size": "1.5rem", "name": "3" },
+				{ "slug": "50", "size": "2.5rem", "name": "4" },
+				{ "slug": "60", "size": "4rem", "name": "5" },
+				{ "slug": "70", "size": "6rem", "name": "6" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--color-bg)",
+			"text": "var(--color-fg)"
+		},
+		"typography": {
+			"fontFamily": "var(--font-sans)",
+			"fontSize": "var(--text-base)",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var(--color-accent)" }
+			}
+		}
+	}
+}

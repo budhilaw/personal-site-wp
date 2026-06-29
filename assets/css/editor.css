@@ -1,0 +1,230 @@
+/* Block editor styles: keep the writing surface close to the front end. */
+:root {
+	--font-sans: "Hanken Grotesk", system-ui, sans-serif;
+	--font-serif: "Newsreader", Georgia, serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+	--color-bg: #eceae4;
+	--color-surface: #f4f3ef;
+	--color-surface-2: #e6e4dd;
+	--color-fg: #1b1c1e;
+	--color-fg-dim: #54585d;
+	--color-faint: #8a8d92;
+	--color-accent: #345b7d;
+	--color-accent-contrast: #f6f8fb;
+	--color-line: rgba(20, 20, 20, 0.12);
+	--color-line-strong: rgba(20, 20, 20, 0.26);
+}
+
+.editor-styles-wrapper {
+	font-family: var(--font-serif);
+	color: var(--color-fg);
+	font-size: 1.18rem;
+	line-height: 1.65;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4 {
+	font-family: var(--font-sans);
+	letter-spacing: -0.012em;
+	line-height: 1.2;
+}
+
+.editor-styles-wrapper a {
+	color: var(--color-accent);
+}
+
+.editor-styles-wrapper blockquote {
+	border-left: 2px solid var(--color-accent);
+	padding-left: 1.5rem;
+	font-style: italic;
+	color: var(--color-fg-dim);
+}
+
+.editor-styles-wrapper code,
+.editor-styles-wrapper pre {
+	font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   Homepage block previews in the editor
+   Framed, labeled sections so each Personal Site block reads as a designed unit.
+   ========================================================================== */
+.editor-styles-wrapper .ps-edit {
+	position: relative;
+	background: var(--color-surface);
+	border: 1px solid var(--color-line);
+	border-left: 3px solid var(--color-accent);
+	border-radius: 8px;
+	margin-block: 1.25rem;
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ps-edit__bar {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.55rem 1rem;
+	background: var(--color-surface-2);
+	border-bottom: 1px solid var(--color-line);
+}
+.ps-edit__chip {
+	font-family: var(--font-mono);
+	font-size: 0.66rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-accent-contrast);
+	background: var(--color-accent);
+	padding: 0.18rem 0.6rem;
+	border-radius: 4px;
+}
+.ps-edit__tag {
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-faint);
+}
+
+.ps-edit__body {
+	padding: 1.4rem 1.5rem 1.6rem;
+}
+.ps-edit__body--row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.ps-edit__heading {
+	font-family: var(--font-sans);
+	font-size: 1.7rem;
+	font-weight: 600;
+	letter-spacing: -0.012em;
+	margin: 0;
+}
+
+/* Hero preview */
+.ps-edit--hero .ps-edit__body {
+	padding-block: 2rem 2.2rem;
+}
+.ps-edit--hero .hero__title {
+	font-family: var(--font-sans);
+	font-size: clamp(2rem, 1.2rem + 2.4vw, 2.8rem);
+	font-weight: 600;
+	letter-spacing: -0.012em;
+	line-height: 1.12;
+	margin: 0;
+	max-width: 16ch;
+}
+.ps-edit--hero .hero__text {
+	font-family: var(--font-serif);
+	font-size: 1.18rem;
+	color: var(--color-fg-dim);
+	margin: 0.9rem 0 0;
+	max-width: 44ch;
+}
+.ps-edit__buttons {
+	display: flex;
+	gap: 0.6rem;
+	margin-top: 1.3rem;
+}
+.ps-edit__btn {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.5rem 1.1rem;
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--color-accent-contrast);
+	background: var(--color-accent);
+	border: 1px solid var(--color-accent);
+	border-radius: 2px;
+}
+.ps-edit__btn--ghost {
+	color: var(--color-fg);
+	background: transparent;
+	border-color: var(--color-line-strong);
+}
+
+/* Focus preview */
+.ps-edit__eyebrow {
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--color-faint);
+	margin: 0 0 0.5rem;
+}
+.ps-edit .focus-grid {
+	display: grid;
+	gap: 1.6rem 2rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin-top: 1.2rem;
+}
+.ps-edit .focus-item {
+	padding-top: 0.9rem;
+	border-top: 1px solid var(--color-line);
+}
+.ps-edit .focus-item__title {
+	font-family: var(--font-sans);
+	font-size: 1.15rem;
+	font-weight: 600;
+	margin: 0;
+}
+.ps-edit .focus-item__text {
+	color: var(--color-fg-dim);
+	margin: 0.4rem 0 0;
+}
+
+/* Query-block skeleton preview */
+.ps-skeleton {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.25rem;
+	margin-top: 1.2rem;
+}
+.ps-skeleton__card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	padding: 0.9rem;
+	background: var(--color-bg);
+	border: 1px solid var(--color-line);
+	border-radius: 6px;
+}
+.ps-skeleton__media {
+	display: block;
+	aspect-ratio: 16 / 10;
+	background: linear-gradient(105deg, var(--color-surface-2) 30%, var(--color-surface) 50%, var(--color-surface-2) 70%);
+	border-radius: 4px;
+}
+.ps-skeleton__line {
+	display: block;
+	height: 0.6rem;
+	width: 80%;
+	background: var(--color-surface-2);
+	border-radius: 3px;
+}
+.ps-skeleton__line--title {
+	height: 0.9rem;
+	width: 65%;
+	background: var(--color-line-strong);
+}
+.ps-edit__note {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	color: var(--color-faint);
+	margin: 1rem 0 0;
+}
+
+@media (max-width: 600px) {
+	.ps-skeleton {
+		grid-template-columns: 1fr;
+	}
+}

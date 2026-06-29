@@ -1,0 +1,22 @@
+/*
+Theme Name: Personal Site
+Theme URI: https://example.com/personal-site
+Author: Personal Site
+Description: A minimal, fast, SEO-friendly portfolio and blog theme for developers and writers. Hand-built CSS design system (no framework), accessible templates, dark mode, and a custom Portfolio content type.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: personal-site
+Tags: blog, portfolio, one-column, two-columns, custom-menu, custom-logo, featured-images, dark-mode, translation-ready, block-styles, wide-blocks, threaded-comments
+
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+/*
+ * The visual stylesheet lives in /assets/css/main.css and is enqueued from
+ * inc/enqueue.php with cache-busting. This file only carries the theme header
+ * that WordPress requires here.
+ */
