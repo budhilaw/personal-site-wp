@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PERSONAL_SITE_VERSION', '1.0.0' );
+define( 'PERSONAL_SITE_VERSION', '1.0.1' );
 define( 'PERSONAL_SITE_DIR', get_template_directory() );
 define( 'PERSONAL_SITE_URI', get_template_directory_uri() );
 
