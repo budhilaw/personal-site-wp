@@ -24,6 +24,7 @@ require_once PERSONAL_SITE_DIR . '/inc/template-tags.php';
 require_once PERSONAL_SITE_DIR . '/inc/seo.php';
 require_once PERSONAL_SITE_DIR . '/inc/contact.php';
 require_once PERSONAL_SITE_DIR . '/inc/blocks.php';
+require_once PERSONAL_SITE_DIR . '/inc/updater.php';
 
 if ( is_admin() ) {
 	require_once PERSONAL_SITE_DIR . '/inc/admin/theme-options.php';

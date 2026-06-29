@@ -1,0 +1,57 @@
+name: Build and release theme
+
+# Push a tag like v1.0.1 to build a clean theme zip and attach it to the
+# matching GitHub Release. The theme's in-app updater reads that release.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      SLUG: personal-site
+    steps:
+      - name: Check out the tag
+        uses: actions/checkout@v4
+
+      - name: Verify the tag matches the theme Version header
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          header="$(grep -i '^Version:' style.css | head -1 | sed -E 's/.*:\s*//' | tr -d '[:space:]')"
+          echo "Tag version:    $tag"
+          echo "Header version: $header"
+          if [ "$tag" != "$header" ]; then
+            echo "::error::Tag ($tag) does not match style.css Version ($header). Bump the header before tagging."
+            exit 1
+          fi
+
+      - name: Build the theme zip
+        run: |
+          stage="${RUNNER_TEMP}/${SLUG}"
+          mkdir -p "$stage"
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='.distignore' \
+            ./ "$stage/"
+          ( cd "$RUNNER_TEMP" && zip -r "${GITHUB_WORKSPACE}/${SLUG}.zip" "$SLUG" )
+          echo "Built ${SLUG}.zip:"
+          unzip -l "${SLUG}.zip" | head -20
+
+      - name: Create or update the release and upload the zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${SLUG}.zip" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "${SLUG}.zip" \
+              --title "$GITHUB_REF_NAME" \
+              --generate-notes
+          fi

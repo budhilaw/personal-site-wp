@@ -21,6 +21,7 @@ A minimal, fast WordPress theme for a developer or writer's portfolio and blog. 
 - [The contact form](#the-contact-form)
 - [Project structure](#project-structure)
 - [Theming](#theming)
+- [Releases and updates](#releases-and-updates)
 - [License](#license)
 
 ## Highlights
@@ -111,6 +112,25 @@ personal-site/
 ## Theming
 
 Change the look from one place. In `assets/css/main.css`, the `:root` block holds the light palette and `[data-theme="dark"]` holds the dark overrides. Adjust the color, type, and spacing tokens and the rest of the theme follows. For a quick accent change, you can also set the accent color under Appearance, Theme Options without touching CSS.
+
+## Releases and updates
+
+The theme updates itself from GitHub Releases, with no plugin and no third party library. There are two parts:
+
+**Building a release.** A GitHub Actions workflow (`.github/workflows/release.yml`) runs when you push a version tag. It packages the theme into a clean `personal-site.zip` (with the correct inner folder name and dev files stripped out) and attaches it to the matching GitHub Release. The workflow uses only GitHub's own tooling, no marketplace actions.
+
+To cut a release:
+
+1. Bump `Version:` in `style.css` (and the `PERSONAL_SITE_VERSION` constant in `functions.php`).
+2. Commit, then tag and push:
+   ```bash
+   git tag v1.0.1
+   git push origin v1.0.1
+   ```
+
+The workflow checks that the tag matches the `Version:` header, builds the zip, and publishes the release.
+
+**Receiving updates.** A small updater in `inc/updater.php` reads the latest release through the GitHub API, compares it to the installed version, and feeds WordPress the normal update notice. When a newer release exists, the site shows it under Dashboard, Updates and Appearance, Themes, and the one click Update installs the release zip. The lookup is cached for twelve hours, so a site contacts GitHub at most twice a day. The repository is public, so no token is required.
 
 ## License
 
